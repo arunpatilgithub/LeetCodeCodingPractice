@@ -20,6 +20,13 @@ public class BinaryTreeFromArray {
             this.left = left;
             this.right = right;
         }
+
+        @Override
+        public String toString() {
+            return "TreeNode{" +
+                    "val=" + val +
+                    '}';
+        }
     }
 
     public static TreeNode createTree(Integer[] arr) {
