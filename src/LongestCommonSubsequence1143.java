@@ -6,9 +6,39 @@ public class LongestCommonSubsequence1143 {
 
         //System.out.println(longestCommonSubsequence("bl","yby"));
         System.out.println(longestCommonSubsequence("abcde","ace"));
+        System.out.println(longestCommonSubsequence2("abcde","ace"));
     }
 
     private static int longestCommonSubsequence(String text1, String text2) {
+
+        int M = text1.length() + 1;
+        int N = text2.length() + 1;
+
+        int[][] dp = new int[M][N];
+
+        for (int i=M-1; i>=0; i--) {
+            for (int j=N-1; j>=0; j--) {
+
+                if (i == M-1 || j == N-1) {
+                    dp[i][j] = 0;
+                } else {
+
+                    if (text1.charAt(i) == text2.charAt(j)) {
+                        dp[i][j] = 1 + dp[i+1][j+1];
+                    } else {
+                        dp[i][j] = Math.max(dp[i+1][j], dp[i][j+1]);
+                    }
+
+                }
+
+            }
+        }
+
+        return dp[0][0];
+
+    }
+
+    private static int longestCommonSubsequence2(String text1, String text2) {
 
         int[][] cache = new int[text1.length()][text2.length()];
 
