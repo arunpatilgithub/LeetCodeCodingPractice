@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.PriorityQueue;
 
 public class NonOverlappingIntervals435 {
 
@@ -15,25 +14,39 @@ public class NonOverlappingIntervals435 {
 
         int removeOperationCount = 0;
 
-        PriorityQueue<int[]> heap = new PriorityQueue<>(
-                Comparator.comparingInt((int[] a) -> a[0]).thenComparingInt(a -> a[1])
-        );
-
-        for (int[] interval : intervals) {
-            heap.offer(interval);
-        }
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[1]));
 
         int lastIntervalEndTime = Integer.MIN_VALUE;
-        while (!heap.isEmpty()) {
+        for (int[] interval : intervals) {
 
-            int[] curr = heap.poll();
-            if (curr[0] < lastIntervalEndTime) {
+            if (interval[0] < lastIntervalEndTime) {
                 removeOperationCount++;
-                lastIntervalEndTime = Math.min(lastIntervalEndTime, curr[1]);
+                lastIntervalEndTime = Math.min(lastIntervalEndTime, interval[1]);
             } else {
-                lastIntervalEndTime = curr[1];
+                lastIntervalEndTime = interval[1];
             }
+
         }
+
+//        PriorityQueue<int[]> heap = new PriorityQueue<>(intervals.length,
+//                Comparator.comparingInt((int[] a) -> a[0]).thenComparingInt(a -> a[1])
+//        );
+//
+//        for (int[] interval : intervals) {
+//            heap.offer(interval);
+//        }
+//
+//        int lastIntervalEndTime = Integer.MIN_VALUE;
+//        while (!heap.isEmpty()) {
+//
+//            int[] curr = heap.poll();
+//            if (curr[0] < lastIntervalEndTime) {
+//                removeOperationCount++;
+//                lastIntervalEndTime = Math.min(lastIntervalEndTime, curr[1]);
+//            } else {
+//                lastIntervalEndTime = curr[1];
+//            }
+//        }
 
         return removeOperationCount;
     }
