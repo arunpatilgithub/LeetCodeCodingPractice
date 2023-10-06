@@ -24,7 +24,7 @@ public class HappyNumber202 {
             }
 
             visited.add(n);
-
+            //Calculate sum of squares
             int tempSum = 0;
             int tempNum = n;
             while (tempNum != 0) {
