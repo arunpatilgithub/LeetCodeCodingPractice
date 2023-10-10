@@ -6,6 +6,7 @@ import java.util.Map;
 public class SubstringWithConcatenationOfAllWords30 {
 
     public static void main(String[] args) {
+
         findSubstring("barfoofoobarthefoobarman", new String[]{"bar","foo","the"}).stream().forEach(System.out::println);
         //findSubstring("barfoothefoobarman", new String[]{"foo","bar"}).stream().forEach(System.out::println);
         //findSubstring("barfoofoobarthefoobarman", new String[]{"bar","foo","the"}).stream().forEach(System.out::println);
