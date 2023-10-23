@@ -4,11 +4,10 @@ public class RemoveElement27 {
 
     public static void main(String[] args) {
 
-        int[]nums = {3,2,2,3};
-        int val = 3;
+        System.out.println(removeElement(new int[]{3, 2, 2, 3}, 3));
+        System.out.println(removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2));
     }
-
-    public int removeElement(int[] nums, int val) {
+        private static int removeElement(int[] nums, int val) {
 
         int count=0;
 
